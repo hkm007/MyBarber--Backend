@@ -3,30 +3,30 @@ const Schema = mongoose.Schema;
 
 const AppointmentSchema = new Schema({
   customer: {
-    type: Schema.Types.ObjectId
+    type: Schema.Types.ObjectId,
+    ref: 'customer'
   },
   shop: {
-    type: Schema.Types.ObjectId
+    type: Schema.Types.ObjectId,
+    ref: 'shop'
   },
   date: {
     type: Date,
-    required: true
+    default: null
   },
   time: {
-    type: String
+    type: String,
+    default: null
   },
   description: {
-    type: String
+    type: String,
+    default: null
   },
-  status: {
+  accepted: {
     type: Boolean,
     default: false
   },
-  active: {
-    type: Boolean,
-    default: true
-  },
-  decline: {
+  declined: {
     type: Boolean,
     default: false
   }

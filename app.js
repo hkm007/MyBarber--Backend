@@ -40,7 +40,7 @@ app.get("/", (req, res) => {
 })
 
 // api
-app.use("/api/shop", shopRoute);
-app.use("/api/customer", customerRoute);
+app.use("/shop/api", shopRoute);
+app.use("/customer/api", customerRoute);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
