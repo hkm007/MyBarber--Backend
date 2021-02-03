@@ -23,6 +23,9 @@ mongoose.connection.on('error', (err) => {
     console.log("Error in connecting to database", err);
 });
 
+// public
+app.use(express.static('./' + 'public/')); 
+
 // cors
 app.use(cors());
 

@@ -36,7 +36,7 @@ exports.createShop = async (req, res) => {
     }
 }
 
-exports.getAppointment = async (req, res) => {
+exports.getAllAppointment = async (req, res) => {
     let shopID = req.params.shopID;
 
     try {
@@ -48,6 +48,39 @@ exports.getAppointment = async (req, res) => {
 
         const appointments = await Appointment.find({
             shop: shopID
+        })
+        .populate('shop', ['name', 'owner', 'phone', 'address'])
+        .populate('customer', ['name', 'phone'])
+        .exec((err, data) => {
+            if(!err) {
+                res.json({
+                    msg: "Appointments found",
+                    data
+                });
+            } else {
+                console.log(err);
+                res.json({ msg: 'Something went wrong' });
+            }
+        });
+    } catch (err) {
+        console.error(err);
+        res.json({ msg: 'Something went wrong' });
+    }
+}
+
+exports.getNewAppointment = async (req, res) => {
+    let shopID = req.params.shopID;
+
+    try {
+        const shop = await Shop.findOne({_id: shopID});
+    
+        if(!shop) {
+            return res.json({ msg: "Unauthorized access" });
+        }
+
+        const appointments = await Appointment.find({
+            shop: shopID,
+            $and: [ { "accepted": false }, { "declined": false } ]
         })
         .populate('shop', ['name', 'owner', 'phone', 'address'])
         .populate('customer', ['name', 'phone'])
