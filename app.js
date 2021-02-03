@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 const { MONGOURI } = require('./config/Keys');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const authRoute = require('./routes/auth');
-const appointmentRoute = require('./routes/appointment');
+const customerRoute = require('./routes/customer');
 const shopRoute = require('./routes/shop');
 const PORT = process.env.PORT || 5000; 
 
@@ -41,8 +40,7 @@ app.get("/", (req, res) => {
 })
 
 // api
-app.use("/api", authRoute);
-app.use("/api", shopRoute);
-app.use("/api", appointmentRoute);
+app.use("/api/shop", shopRoute);
+app.use("/api/customer", customerRoute);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

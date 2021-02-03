@@ -25,6 +25,10 @@ const AppointmentSchema = new Schema({
   active: {
     type: Boolean,
     default: true
+  },
+  decline: {
+    type: Boolean,
+    default: false
   }
 });
 

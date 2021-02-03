@@ -1,9 +1,14 @@
 const Shop = require('../models/Shop');
+const Appointment = require('../models/Appointment');
 
-exports.getAllShop = (req, res) => {
-    console.log("all shop api hit")
+exports.createShop = (req, res) => {
+    console.log("new shop api hit");
 }
 
-exports.getShop = (req, res) => {
-    console.log(req.body)
+exports.getAppointment = (req, res) => {
+    console.log(req.params.shopID);
+}
+
+exports.acknowledgeAppointment = (req, res) => {
+    console.log(req.params.appointmentID);
 }

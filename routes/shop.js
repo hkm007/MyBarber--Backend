@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const { 
-    getAllShop,
-    getShop
+    createShop,
+    getAppointment,
+    acknowledgeAppointment
 } = require('../controllers/shop');
 
 
-router.get("/shop/:customerID", getAllShop);
-router.post("/shop/:customerID", getShop);
+router.post("/new", createShop);
+router.get("/appointment/:shopID", getAppointment);
+router.put("/appointment/:appointmentID", acknowledgeAppointment);
 
 module.exports = router;
