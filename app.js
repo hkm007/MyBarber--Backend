@@ -43,4 +43,4 @@ app.get("/", (req, res) => {
 app.use("/api/shop", shopRoute);
 app.use("/api/customer", customerRoute);
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

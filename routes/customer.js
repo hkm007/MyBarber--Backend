@@ -11,8 +11,8 @@ const {
 
 
 router.post("/new", createCustomer);
-router.post("/appointment/new/:customerID", createAppointment);
-router.delete("/appointment/cancel/:custometID/:appointmentID", cancelAppointment);
+router.post("/appointment/new/:customerID/:shopID", createAppointment);
+router.delete("/appointment/cancel/:customerID/:appointmentID", cancelAppointment);
 router.get("/appointment/:customerID", getAppointment);
 router.get("/shop/:customerID", getAllShop);
 router.get("/shop/:customerID/:shopID", getShop);
