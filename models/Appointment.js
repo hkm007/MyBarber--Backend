@@ -11,7 +11,7 @@ const AppointmentSchema = new Schema({
     ref: 'shop'
   },
   date: {
-    type: Date,
+    type: String,
     default: null
   },
   time: {

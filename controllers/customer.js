@@ -154,7 +154,7 @@ exports.getAllShop = async (req, res) => {
 
 exports.getShop = async (req, res) => {
     let customerID = req.params.customerID;
-    let shopID = req.params.shopID;
+    let { name } = req.body;
 
     // validating
     try {
@@ -163,17 +163,23 @@ exports.getShop = async (req, res) => {
         if(!customer) {
             return res.json({ msg: "Unauthorized access" });
         }
-        
-        const shop = await Shop.findOne({_id: shopID});
 
-        if(!shop) {
-            return res.json({ msg: "No shop found!" });
-        } else {
+        const shops = await Shop.find();
+        // console.log(shops)
+
+        let data = shops.filter((shop) => {
+            return shop.name.toLowerCase() === name.toLowerCase();
+        })
+
+        if(data.length > 0) {
             return res.json({
                 msg: "Shop found",
-                data: shop
+                data
             })
+        } else {
+            return res.json({ msg: "No shop found!" });
         }
+        
     } catch(err) {
         console.error(err);
         res.json({ msg: 'Something went wrong' });

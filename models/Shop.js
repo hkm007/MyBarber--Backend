@@ -7,7 +7,8 @@ const ShopSchema = new Schema({
     required: true
   },
   owner: {
-    type: String
+    type: String,
+    default: null
   },
   phone: {
     type: String,
